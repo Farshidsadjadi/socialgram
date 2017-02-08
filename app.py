@@ -1,9 +1,18 @@
-from pymongo import MongoClient
 from flask import Flask, render_template, request
-
+from form import RegistrationForm
+from models import *
+from flask_mongoengine import MongoEngine
 app = Flask(__name__)
 
-@app.route("/", methods=['POST', 'GET'])
+
+@app.route("/register", methods=['POST', 'GET'])
+def register():
+    form = RegistrationForm(request.form)
+    if request.method == 'POST' and form.validate():
+        return "success"
+    return render_template("register.html", form_register=form)
+
+@app.route("/test", methods=['POST', 'GET'])
 def hello():
     hasError = False
     fields = {
@@ -64,12 +73,10 @@ def hello():
             return "success :)"
 
 
-    return render_template("register.html", fields=fields)
+    return render_template("register2.html", fields=fields)
 
 
 
 if __name__ == "__main__":
-    client = MongoClient()
-    db = client.socialgram
-    user = db.user
+    connect('socialgram')
     app.run()
