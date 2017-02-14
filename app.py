@@ -8,7 +8,10 @@ app = Flask(__name__)
 @app.route("/register", methods=['POST', 'GET'])
 def register():
     form = RegistrationForm(request.form)
+    new_user = User()
     if request.method == 'POST' and form.validate():
+        form.populate_obj(new_user)
+        new_user.save()
         return "success"
     return render_template("register.html", form_register=form)
 

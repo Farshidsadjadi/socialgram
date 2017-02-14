@@ -17,12 +17,11 @@
 <body>
 <form action="/register" method="POST">
     <dl>
+    {{ render_field(form_register.email) }}
+    {{ render_field(form_register.phone) }}
+    {{ render_field(form_register.password) }}
     {{ render_field(form_register.firstname) }}
     {{ render_field(form_register.lastname) }}
-    {{ render_field(form_register.age) }}
-    {{ render_field(form_register.username) }}
-    {{ render_field(form_register.email) }}
-    {{ render_field(form_register.password) }}
     {{ render_field(form_register.confirm) }}
     </dl>
 
