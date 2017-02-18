@@ -1,0 +1,27 @@
+{% from "form_helpers.html" import render_field %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        .errorInput {
+            border: 1px solid red;
+        }
+
+        .errorLabel {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<form action="/login" method="POST">
+    <dl>
+    {{ render_field(form_login.email) }}
+    {{ render_field(form_login.password) }}
+    </dl>
+
+    <input type="submit" value="Login">
+</form>
+</body>
+</html>
