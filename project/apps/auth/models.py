@@ -1,5 +1,6 @@
-from mongoengine import *
 import datetime
+from mongoengine import *
+
 class User(Document):
     email = StringField(required=True, unique=True)
     phone = IntField(min_value=8)
