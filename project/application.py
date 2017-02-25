@@ -146,7 +146,7 @@ def configure_errorhandlers(app):
         if request.is_xhr:
             # import_cart_to_list(error)
             return jsonify(error=_('Sorry, an error has occurred')), 500
-        return render_template('/marketplace/bab/errors/500.html')
+        return render_template('errors/500.html')
 
     @app.errorhandler(401)
     def unauthorized(error):
